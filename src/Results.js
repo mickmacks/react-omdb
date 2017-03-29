@@ -3,7 +3,7 @@ import styles from './styles/index'
 
 class Results extends Component{
   render(){
-    let {movies} = this.props
+    let movies = this.props.movies
     let results = movies.map( (movie, index) => {
       return (
         <div key={index} style={styles.movie}>
