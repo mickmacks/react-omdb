@@ -67,6 +67,7 @@ Before we start building our React app, let's create a `HelloWorld` component ju
 
 
 <details><summary>click for simplified hard-coded gif data you could use</summary>
+
 ```js
 {
   "data": [
