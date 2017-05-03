@@ -6,4 +6,4 @@ import './index.css'
 ReactDOM.render(
   <Home />,
   document.getElementById('root')
-)
+);

@@ -1,34 +1,21 @@
+console.log('made it to search.js from container')
+
 import React, {Component} from 'react'
+// add css
 
 class Search extends Component {
-  constructor () {
-    super()
-    this.state={
-      query: ''
-    }
-  }
-  onSearchSubmit (event){
-    event.preventDefault()
-    console.log('searched!')
-  }
-  onInputChange (event){
-    this.setState({
-      query: event.target.value
-    })
-    console.log(this.state.query)
-  }
-
   render() {
+    let {handleSearchInput, handleSubmitQuery, query} = this.props
     return (
       <div className="searchForm">
-        <form onSubmit={event => this.onSearchSubmit(event)}
+        <form onSubmit={(event) => handleSubmitQuery(event)}
             className="search">
           <input
-          onChange={event => this.onInputChange(event)}
+          onChange={(event) => handleSearchInput(event)}
           type="text"
-          placeholder="type to search"
-          value={this.state.query} />
-            <button type="submit">Submit</button>
+          placeholder="search for a movie title"
+          value={query} />
+            <button type="submit">Search</button>
         </form>
       </div>
     )
