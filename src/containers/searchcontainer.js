@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {queryOmdb} from '../services/utilities'
 import Search from '../components/search'
+import Results from '../components/results'
 
 class SearchContainer extends Component {
   constructor(props) {
@@ -15,6 +16,13 @@ class SearchContainer extends Component {
   onSearchInput(event) {
     this.setState({
       query: event.target.value
+    })
+  }
+
+  handleToggleSearch (event) {
+    let toggledState = !this.state.hasSearched
+    this.setState({
+      hasSearched: toggledState
     })
   }
 
@@ -34,12 +42,30 @@ class SearchContainer extends Component {
   }
 
   render(){
-    return(
-          <Search
-            handleSubmitQuery={(event) => this.onSubmitQuery(event)}
-            handleSearchInput={(event) => this.onSearchInput(event)}
-            query={this.state.query} />
-    )
+    if (this.state.hasSearched) {
+
+      return(
+        <div>
+          <button
+            onClick={ event => this.handleToggleSearch(event) }
+            className="btn btn-primary"
+          >Search Again</button>
+
+          <Results movies={this.state.movies} />
+        </div>
+      )
+
+    } else {
+
+      return(
+        <Search
+          handleSubmitQuery={(event) => this.onSubmitQuery(event)}
+          handleSearchInput={(event) => this.onSearchInput(event)}
+          query={this.state.query} />
+      )
+
+
+    }
   }
 }
 
